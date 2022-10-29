@@ -30,6 +30,20 @@ export default function App() {
     };
   }
 
+  let useDebounce = (value, delay) => {
+    const [debaounceValue, setDebounceValue] = React.useState(value);
+
+    React.useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        setDebounceValue(value);
+      }, delay);
+
+      return () => clearTimeout(timeoutId);
+    }, [value]);
+
+    return debaounceValue;
+  };
+
   return (
     <div>
       <h1>Debounce function</h1>
