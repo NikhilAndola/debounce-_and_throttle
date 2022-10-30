@@ -52,6 +52,7 @@ export default function App() {
 
   const incDecHandle = () => {
     setValue(value + 1);
+    inputRef.current.focus();
   };
 
   const [inputVal, setInputVal] = useState('');
