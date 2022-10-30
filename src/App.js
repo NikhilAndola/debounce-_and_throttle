@@ -2,6 +2,8 @@ import React from 'react';
 import './style.css';
 
 export default function App() {
+  const [value, setValue] = React.useState(0);
+
   const debounceFunc = (fn, delay = 1000) => {
     let timeout;
     return (...args) => {
@@ -44,11 +46,21 @@ export default function App() {
     return debaounceValue;
   };
 
+  const debouValues = useDebounce(value, 2000);
+  console.log(debouValues);
+
+  const incDecHandle = () => {
+    setValue(value + 1);
+  };
+
   return (
     <div>
       <h1>Debounce function</h1>
       <button onClick={debounceFunc(printFn)}>Debounce</button>
       <button onClick={throttle(printFn)}>Throttle</button>
+      <button onClick={incDecHandle}>Inc/Dec</button>
+      {value}
+      {debouValues}
     </div>
   );
 }
